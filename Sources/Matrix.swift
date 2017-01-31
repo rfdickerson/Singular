@@ -1,5 +1,7 @@
 
-public final class Matrix {
+import Foundation
+
+public final class Matrix: Equatable {
 
     var values: [Float]
     
@@ -11,6 +13,27 @@ public final class Matrix {
         self.rows = rows
         self.columns = columns
         self.values = [Float](repeating: 0, count: rows * columns)
+        
+    }
+    
+    public convenience init(_ scalars: [[Float]]) {
+        
+        var numCols = 0
+        
+        let numRows = scalars.count
+        
+        for row in scalars {
+            numCols = row.count
+        }
+        
+        self.init(numRows, numCols)
+        
+        for i in 0...rows-1 {
+            for j in 0...columns-1 {
+                set(i, j, scalars[i][j])
+            }
+        }
+
         
     }
     
@@ -41,4 +64,33 @@ public final class Matrix {
     }
     
     
+}
+
+
+public func * (left: Matrix, right: Matrix) -> Matrix {
+    
+    assert(left.columns == right.rows)
+    
+    let matrix = Matrix(left.rows, right.columns)
+    
+    for i in 0...left.rows-1 {
+        for j in 0...right.columns-1 {
+            
+            var x: Float = 0.0
+            
+            for k in 0...left.columns-1 {
+                x += left.get(i, k) * right.get(k, j)
+                
+            }
+            
+            matrix.set(i, j, x)
+        }
+    }
+    
+    return matrix
+    
+}
+
+public func == (left: Matrix, right: Matrix) -> Bool {
+    return left.values == right.values
 }

@@ -46,6 +46,14 @@ class SingularTests: XCTestCase {
         
         XCTAssertEqual(m3.values, [30,66,102,36,81,126,42,96,150])
     }
+    
+    func testInvert() {
+     
+        let m = Matrix([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
+        
+        invert(m)
+        
+    }
 
 
     static var allTests : [(String, (SingularTests) -> () throws -> Void)] {

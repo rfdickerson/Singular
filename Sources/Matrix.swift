@@ -80,7 +80,6 @@ public func * (left: Matrix, right: Matrix) -> Matrix {
             
             for k in 0...left.columns-1 {
                 x += left.get(i, k) * right.get(k, j)
-                
             }
             
             matrix.set(i, j, x)

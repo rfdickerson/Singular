@@ -93,3 +93,18 @@ public func * (left: Matrix, right: Matrix) -> Matrix {
 public func == (left: Matrix, right: Matrix) -> Bool {
     return left.values == right.values
 }
+
+extension Matrix: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        var output: String = ""
+        for i in 0...self.rows-1 {
+            for j in 0...self.columns-1 {
+                let value = self.get(i, j)
+                output += "\(value) "
+            }
+            output += "\n"
+        }
+        
+        return output
+    }
+}

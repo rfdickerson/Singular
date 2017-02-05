@@ -51,7 +51,7 @@ class SingularTests: XCTestCase {
      
         let m = Matrix([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
         
-        invert(m)
+        let minv = invert(m)
         
     }
 

@@ -18,19 +18,34 @@ public extension Matrix {
             }
         }
         
-        // swap pivot rows
-        
-        // reduce
-        
-        // find pivot
-        var pivotColumn = 0
-        var pivotRow = 0
-        
-        for i in 0...self.columns {
-            if matrix.get(i, pivotRow) != 0 {
-                pivotColumn = i
+        for i in 0...self.columns-1 {
+            
+            // find a pivot
+            var pivotRow = 0
+            var pivotValue: Float = 1
+            
+            for j in 0...self.rows-1 {
+                let value = matrix.get(j, i)
+                if value != 0 {
+                    pivotRow = j
+                    pivotValue = value
+                    break
+                }
             }
+            
+            // divide the row by pivot
+            
+            for i2 in 0...matrix.columns-1 {
+                let currentValue = matrix.get(pivotRow, i2)
+                matrix.set(pivotRow, i2, currentValue/pivotValue)
+            }
+            
         }
+        
+        print(matrix)
+        // print("Pivot column \(pivotColumn)")
+        
+    
         
         return nil
         

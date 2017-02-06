@@ -5,6 +5,7 @@ public extension Matrix {
 
     func invert() -> Matrix? {
         
+        print(self)
         
         // augment matrix
         let matrix = Matrix(self.rows, self.columns*2)
@@ -23,14 +24,25 @@ public extension Matrix {
             // find a pivot
             var pivotRow = 0
             var pivotValue: Float = 1
+            var maxValue = -Float.infinity
             
             for j in 0...self.rows-1 {
                 let value = matrix.get(j, i)
                 if value != 0 {
-                    pivotRow = j
-                    pivotValue = value
-                    break
+                    if maxValue < value {
+                        pivotRow = j
+                        pivotValue = value
+                        maxValue = value
+                    }
                 }
+            }
+            
+            // exchange the rows
+            for j in 0...matrix.columns-1 {
+                let temp = matrix.get(pivotRow, j)
+                let temp2 = matrix.get(i, j)
+                matrix.set(i, j, temp)
+                matrix.set(pivotRow, j, temp2)
             }
             
             // divide the row by pivot
@@ -40,9 +52,27 @@ public extension Matrix {
                 matrix.set(pivotRow, i2, currentValue/pivotValue)
             }
             
+            // subtract out multiples
+            
+            for i2 in 0...matrix.rows-1 {
+                if i2 != pivotRow {
+                    
+                    let multiple = matrix.get(i2, i)
+                    
+                    for c in 0...matrix.columns-1 {
+                        let a = matrix.get(pivotRow, c)
+                        let b = matrix.get(i2, c)
+                        matrix.set(i2, c, b - multiple*a)
+                    }
+                    
+                }
+            }
+            
+            
+           print(matrix)
         }
         
-        print(matrix)
+        
         // print("Pivot column \(pivotColumn)")
         
     

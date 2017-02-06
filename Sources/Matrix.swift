@@ -3,7 +3,7 @@ import Foundation
 
 public final class Matrix: Equatable {
 
-    var values: [Float]
+    var values: [Double]
     
     var rows: Int
     var columns: Int
@@ -12,11 +12,11 @@ public final class Matrix: Equatable {
         
         self.rows = rows
         self.columns = columns
-        self.values = [Float](repeating: 0, count: rows * columns)
+        self.values = [Double](repeating: 0, count: rows * columns)
         
     }
     
-    public convenience init(_ scalars: [[Float]]) {
+    public convenience init(_ scalars: [[Double]]) {
         
         var numCols = 0
         
@@ -49,14 +49,14 @@ public final class Matrix: Equatable {
         
     }
     
-    public func get(_ m: Int, _ n: Int) -> Float {
+    public func get(_ m: Int, _ n: Int) -> Double {
     
         assert( m * n <= values.count )
     
         return values[rows * n + m]
     }
     
-    public func set(_ m: Int, _ n: Int, _ value: Float) {
+    public func set(_ m: Int, _ n: Int, _ value: Double) {
         
         assert( m * n <= values.count )
         
@@ -76,7 +76,7 @@ public func * (left: Matrix, right: Matrix) -> Matrix {
     for i in 0...left.rows-1 {
         for j in 0...right.columns-1 {
             
-            var x: Float = 0.0
+            var x = 0.0
             
             for k in 0...left.columns-1 {
                 x += left.get(i, k) * right.get(k, j)

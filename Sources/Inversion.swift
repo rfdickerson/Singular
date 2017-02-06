@@ -23,8 +23,8 @@ public extension Matrix {
             
             // find a pivot
             var pivotRow = 0
-            var pivotValue: Float = 1
-            var maxValue = -Float.infinity
+            var pivotValue = 1.0
+            var maxValue = -Double.infinity
             
             for j in i...self.rows-1 {
                 let value = matrix.get(j, i)
@@ -68,16 +68,18 @@ public extension Matrix {
                 }
             }
             
-            
-           print(matrix)
         }
         
+        let retMatrix = Matrix(self.rows, self.columns)
         
-        // print("Pivot column \(pivotColumn)")
+        for i in 0...rows-1 {
+            for j in 0...columns-1 {
+                let value = matrix.get(i, j+columns)
+                retMatrix.set(i, j, value)
+            }
+        }
         
-    
-        
-        return nil
+        return retMatrix
         
     }
     

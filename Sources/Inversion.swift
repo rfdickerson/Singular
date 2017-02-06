@@ -26,7 +26,7 @@ public extension Matrix {
             var pivotValue: Float = 1
             var maxValue = -Float.infinity
             
-            for j in 0...self.rows-1 {
+            for j in i...self.rows-1 {
                 let value = matrix.get(j, i)
                 if value != 0 {
                     if maxValue < value {

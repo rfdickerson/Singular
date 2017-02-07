@@ -90,6 +90,25 @@ public func * (left: Matrix, right: Matrix) -> Matrix {
     
 }
 
+
+public func - (left: Matrix, right: Matrix) -> Matrix {
+ 
+    assert(left.columns == right.columns)
+    assert(left.rows == right.rows)
+    
+    let matrix = Matrix(left.rows, right.columns)
+    
+    for i in 0...left.rows-1 {
+        for j in 0...left.columns-1 {
+            let a = left.get(i, j) - right.get(i, j)
+            matrix.set(i, j, a)
+        }
+    }
+    
+    return matrix
+    
+}
+
 public func == (left: Matrix, right: Matrix) -> Bool {
     return left.values == right.values
 }

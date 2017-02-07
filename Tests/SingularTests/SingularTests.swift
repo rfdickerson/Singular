@@ -40,7 +40,9 @@ class SingularTests: XCTestCase {
     
     func testMultiply2() {
         
-        let m1 = Matrix([[1,2,3],[4,5,6],[7,8,9]])
+        let m1 = Matrix([[1, 2, 3],
+                         [4, 5, 6],
+                         [7, 8, 9]])
         
         let m3 = m1 * m1
         
@@ -49,9 +51,14 @@ class SingularTests: XCTestCase {
     
     func testInvert() {
      
-        let m = Matrix([[3, 0, 2], [2, 0, -2], [0, 1, 1]])
+        let m = Matrix([[ 3, 0,  2],
+                        [ 2, 0, -2],
+                        [ 0, 1,  1]])
         
-        let a = Matrix([[0.2, 0.2, 0.0], [-0.2, 0.3, 1.0], [0.2, -0.3, -0.0]])
+        let a = Matrix([[ 0.2,  0.2,  0.0],
+                        [-0.2,  0.3,  1.0],
+                        [ 0.2, -0.3, -0.0]])
+        
         let minv = invert(m)
         
         XCTAssertEqual(minv!, a)
@@ -60,9 +67,14 @@ class SingularTests: XCTestCase {
     
     func testInvert2() {
         
-        let m = Matrix([[1, 3, 3], [1, 4, 3], [1, 3, 4]])
+        let m = Matrix([[1, 3, 3],
+                        [1, 4, 3],
+                        [1, 3, 4]])
         
-        let a = Matrix([[7, -3, -3], [-1, 1, 0], [-1, 0, 1]])
+        let a = Matrix([[ 7, -3, -3],
+                        [-1,  1,  0],
+                        [-1,  0,  1]])
+        
         let minv = invert(m)
         
         XCTAssertEqual(minv, a)
@@ -87,7 +99,21 @@ class SingularTests: XCTestCase {
         
     }
     
-    
+    func testSubtraction() {
+        
+        let m1 = Matrix([[3, 0,  2, 1],
+                         [2, 0, -2, 3],
+                         [0, 1,  1, 2],
+                         [0, 0,  0, 1]])
+        
+        let m2 = Matrix([[3, 0,  2, 1],
+                         [2, 0, -2, 3],
+                         [0, 1,  1, 2],
+                         [0, 0,  0, 1]])
+        
+        let m3 = m1 - m2
+        
+    }
 
 
     static var allTests : [(String, (SingularTests) -> () throws -> Void)] {

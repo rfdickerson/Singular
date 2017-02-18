@@ -23,8 +23,8 @@ public extension Matrix {
             
             // find a pivot
             var pivotRow = 0
-            var pivotValue = 1.0
-            var maxValue = -Double.infinity
+            var pivotValue: Float = 1.0
+            var maxValue = -Float.infinity
             
             for j in i...self.rows-1 {
                 let value = matrix.get(j, i)

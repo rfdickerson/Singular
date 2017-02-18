@@ -114,6 +114,20 @@ class SingularTests: XCTestCase {
         let m3 = m1 - m2
         
     }
+    
+    func testScalarMultiply() {
+        
+        let m1 = Matrix([[3, 0,  2, 1],
+                         [2, 0, -2, 3],
+                         [0, 1,  1, 2],
+                         [0, 0,  0, 1]])
+        
+        let m2 = 3 * m1
+        
+        
+        
+        
+    }
 
 
     static var allTests : [(String, (SingularTests) -> () throws -> Void)] {

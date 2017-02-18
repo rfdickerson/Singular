@@ -3,7 +3,7 @@ import Foundation
 
 public final class Matrix: Equatable {
 
-    var values: [Double]
+    var values: [Float]
     
     var rows: Int
     var columns: Int
@@ -12,11 +12,11 @@ public final class Matrix: Equatable {
         
         self.rows = rows
         self.columns = columns
-        self.values = [Double](repeating: 0, count: rows * columns)
+        self.values = [Float](repeating: 0, count: rows * columns)
         
     }
     
-    public convenience init(_ scalars: [[Double]]) {
+    public convenience init(_ scalars: [[Float]]) {
         
         var numCols = 0
         
@@ -49,14 +49,14 @@ public final class Matrix: Equatable {
         
     }
     
-    public func get(_ m: Int, _ n: Int) -> Double {
+    public func get(_ m: Int, _ n: Int) -> Float {
     
         assert( m * n <= values.count )
     
         return values[rows * n + m]
     }
     
-    public func set(_ m: Int, _ n: Int, _ value: Double) {
+    public func set(_ m: Int, _ n: Int, _ value: Float) {
         
         assert( m * n <= values.count )
         
@@ -67,51 +67,7 @@ public final class Matrix: Equatable {
 }
 
 
-public func * (left: Matrix, right: Matrix) -> Matrix {
-    
-    assert(left.columns == right.rows)
-    
-    let matrix = Matrix(left.rows, right.columns)
-    
-    for i in 0...left.rows-1 {
-        for j in 0...right.columns-1 {
-            
-            var x = 0.0
-            
-            for k in 0...left.columns-1 {
-                x += left.get(i, k) * right.get(k, j)
-            }
-            
-            matrix.set(i, j, x)
-        }
-    }
-    
-    return matrix
-    
-}
 
-
-public func - (left: Matrix, right: Matrix) -> Matrix {
- 
-    assert(left.columns == right.columns)
-    assert(left.rows == right.rows)
-    
-    let matrix = Matrix(left.rows, right.columns)
-    
-    for i in 0...left.rows-1 {
-        for j in 0...left.columns-1 {
-            let a = left.get(i, j) - right.get(i, j)
-            matrix.set(i, j, a)
-        }
-    }
-    
-    return matrix
-    
-}
-
-public func == (left: Matrix, right: Matrix) -> Bool {
-    return left.values == right.values
-}
 
 extension Matrix: CustomDebugStringConvertible {
     public var debugDescription: String {

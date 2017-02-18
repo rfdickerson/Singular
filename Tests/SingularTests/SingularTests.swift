@@ -125,6 +125,13 @@ class SingularTests: XCTestCase {
         let m2 = 3 * m1
         
         
+        let answer = Matrix([[9, 0,  6, 3],
+                         [6, 0, -6, 9],
+                         [0, 3,  3, 6],
+                         [0, 0,  0, 3]])
+        
+        XCTAssertEqual(m2, answer)
+        
         
         
     }

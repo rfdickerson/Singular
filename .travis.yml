@@ -1,0 +1,15 @@
+os: linux
+dist: trusty
+sudo: required
+
+before_install:
+    - sudo apt-get update -y 
+    - wget https://swift.org/builds/swift-3.0.2-release/ubuntu1404/swift-3.0.2-RELEASE/swift-3.0.2-RELEASE-ubuntu14.04.tar.gz 
+    - tar xzvf swift-3.0.2-RELEASE-ubuntu14.04.tar.gz  
+    - export PATH=swift-3.0.2-RELEASE-ubuntu14.04/usr/bin:$PATH 
+    - sudo apt-get -y install clang-3.8
+
+
+script:
+    - swift build
+    - swift test

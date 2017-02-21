@@ -140,6 +140,10 @@ class SingularTests: XCTestCase {
     static var allTests : [(String, (SingularTests) -> () throws -> Void)] {
         return [
             ("testCreate", testCreate),
+	        ("testCreateWithArrays", testCreateWithArrays),
+            ("testIdentity", testIdentity),
+	        ("testInvert", testInvert),
+            ("testMultiply", testMultiply)
         ]
     }
 }

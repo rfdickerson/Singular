@@ -142,7 +142,6 @@ class SingularTests: XCTestCase {
             ("testCreate", testCreate),
 	        ("testCreateWithArrays", testCreateWithArrays),
             ("testIdentity", testIdentity),
-	        ("testInvert", testInvert),
             ("testMultiply", testMultiply)
         ]
     }

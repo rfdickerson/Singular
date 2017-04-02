@@ -21,7 +21,7 @@ class SingularTests: XCTestCase {
     
     func testIdentity() {
         
-        let m = Matrix.createIdentity(3)
+        let m = Matrix.eye(3)
         
         XCTAssertEqual(m.get(1,2), 0.0, "Must be zeroed")
         XCTAssertEqual(m.get(1,1), 1.0, "Must be one")
@@ -30,8 +30,8 @@ class SingularTests: XCTestCase {
     
     func testMultiply() {
         
-        let m1 = Matrix.createIdentity(3)
-        let m2 = Matrix.createIdentity(3)
+        let m1 = Matrix.eye(3)
+        let m2 = Matrix.eye(3)
         
         let m3 = m1 * m2
         
@@ -112,6 +112,8 @@ class SingularTests: XCTestCase {
                          [0, 0,  0, 1]])
         
         let m3 = m1 - m2
+
+        XCTAssert(m3.get(0,0) == 0)
         
     }
     
@@ -122,7 +124,7 @@ class SingularTests: XCTestCase {
                          [0, 1,  1, 2],
                          [0, 0,  0, 1]])
         
-        let m2 = 3 * m1
+        let m2 = 3 .* m1
         
         
         let answer = Matrix([[9, 0,  6, 3],

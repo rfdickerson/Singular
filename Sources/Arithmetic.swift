@@ -59,7 +59,9 @@ public func + (left: Matrix, right: Matrix) -> Matrix {
     
 }
 
-public func * (left: Float, right: Matrix) -> Matrix {
+infix operator .*
+
+public func .* (left: Float, right: Matrix) -> Matrix {
     
 
     let matrix = Matrix(right.rows, right.columns)

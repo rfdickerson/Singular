@@ -37,7 +37,7 @@ public final class Matrix: Equatable {
         
     }
     
-    public static func createIdentity(_ rows: Int) -> Matrix {
+    public static func eye(_ rows: Int) -> Matrix {
         
         let matrix = Matrix( rows, rows )
         
@@ -47,6 +47,22 @@ public final class Matrix: Equatable {
         
         return matrix
         
+    }
+
+    public static func ones(_ rows: Int, _ columns: Int) -> Matrix {
+
+        assert(rows > 0 && columns > 0)
+
+        let matrix = Matrix( rows, rows )
+        
+        for i in 0...rows-1 {
+            for j in 0...columns-1 {
+                matrix.set(i,j,1)
+            }
+        }
+        
+        return matrix
+
     }
     
     public func get(_ m: Int, _ n: Int) -> Float {
